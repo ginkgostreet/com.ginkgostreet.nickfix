@@ -55,7 +55,7 @@ function nickfix_civicrm_pre($op, $objectName, $id, &$params) {
     }
 
     /* Fetch first name if not provided */
-    $firstname = CRM_Utils_Array::value('first_name', $params);
+    $firstname = $params['first_name'] ?? NULL;
     if (!empty($id) && empty($firstname)) {
       $firstname = civicrm_api3('Contact', 'getvalue', array(
         'return' => 'first_name',
